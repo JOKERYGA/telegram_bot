@@ -1,4 +1,4 @@
-python version ---> 3.12.2
+python version ---> 3.12.3
 aiogram==3.4.1
 
 

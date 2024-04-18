@@ -35,6 +35,6 @@ async def orm_update_products(session: AsyncSession, product_id: int, data):
     await session.commit()
     
 async def orm_delete_product(session: AsyncSession, product_id: int):
-    query = delete(Product).where(Product.id==product_id)
+    query = delete(Product).where(Product.id == product_id)
     await session.execute(query)
-    return session.commit()
+    await session.commit()

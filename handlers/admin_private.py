@@ -5,7 +5,7 @@ from aiogram.fsm.state import State, StatesGroup
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from database.orm_query import orm_add_product, orm_get_products
+from database.orm_query import orm_add_product, orm_delete_product, orm_get_products
 from filters.chat_types import ChatTypeFilter, IsAdmin
 from kbds.inline import get_callback_btns
 from kbds.reply import get_keyboard
@@ -22,6 +22,19 @@ ADMIN_KB = get_keyboard(
     sizes=(2,),
 )
 
+class AddProduct(StatesGroup):
+    # Шаги состояний
+    name = State()
+    description = State()
+    price = State()
+    image = State()
+
+    texts = {
+        'AddProduct:name': 'Введите название заново:',
+        'AddProduct:description': 'Введите описание заново:',
+        'AddProduct:price': 'Введите стоимость заново:',
+        'AddProduct:image': 'Этот стейт последний, поэтому...',
+    }
 
 @admin_router.message(Command("admin"))
 async def admin_features(message: types.Message):
@@ -43,22 +56,30 @@ async def starring_at_product(message: types.Message, session: AsyncSession):
     await message.answer("ОК, вот список товаров ⬆️")
 
 
+@admin_router.callback_query(F.data.startswith('delete_'))
+async def delete_product(callback: types.CallbackQuery, session: AsyncSession):
+    
+    product_id = callback.data.split("_")[-1]
+    await orm_delete_product(session, int(product_id))
+    
+    await callback.answer("Товар удален", show_alert=True)
+    await callback.message.answer("Товар удален!")
+
+
+
+# @admin_router.callback_query(StateFilter(None), F.data.startswith('change_'))
+# async def change_product_callback(callback: types.CallbackQuery, state: FSMContext, session: AsyncSession):
+    
+#     product_id = callback.data.split("_")[-1]
+#     await orm_delete_product(session, int(product_id))
+    
+#     await callback.answer("Товар удален", show_alert=True)
+#     await callback.message.answer("Товар удален!") 1:13:01
+
 
 # Код ниже для машины состояний (FSM)
 
-class AddProduct(StatesGroup):
-    # Шаги состояний
-    name = State()
-    description = State()
-    price = State()
-    image = State()
 
-    texts = {
-        'AddProduct:name': 'Введите название заново:',
-        'AddProduct:description': 'Введите описание заново:',
-        'AddProduct:price': 'Введите стоимость заново:',
-        'AddProduct:image': 'Этот стейт последний, поэтому...',
-    }
 
 # Становимся в состояние ожидания ввода name
 @admin_router.message(StateFilter(None), F.text == "Добавить товар")

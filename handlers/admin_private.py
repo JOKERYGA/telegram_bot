@@ -3,6 +3,9 @@ from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from database.models import Product
 from filters.chat_types import ChatTypeFilter, IsAdmin
 from kbds.reply import get_keyboard
 
@@ -37,7 +40,7 @@ async def change_product(message: types.Message):
 
 
 @admin_router.message(F.text == "Удалить товар")
-async def delete_product(message: types.Message):
+async def delete_product(message: types.Message, counter):
     await message.answer("Выберите товар(ы) для удаления")
 
 
@@ -116,7 +119,7 @@ async def add_description(message: types.Message, state: FSMContext):
     await message.answer("Введите стоимость товара")
     await state.set_state(AddProduct.price)
 
-
+# Хэндлер для отлова некорректных ввода для состояния price
 @admin_router.message(AddProduct.price, F.text)
 async def add_price(message: types.Message, state: FSMContext):
     await state.update_data(price=message.text)
@@ -125,9 +128,17 @@ async def add_price(message: types.Message, state: FSMContext):
 
 
 @admin_router.message(AddProduct.image, F.photo)
-async def add_image(message: types.Message, state: FSMContext):
+async def add_image(message: types.Message, state: FSMContext, session: AsyncSession):
+    
     await state.update_data(image=message.photo[-1].file_id)
     await message.answer("Товар добавлен", reply_markup=ADMIN_KB)
     data = await state.get_data()
-    await message.answer(str(data))
+    obj = Product(
+        name=data["name"],
+        description=data["description"],
+        price=float(data["price"]),
+        image=data["image"],
+    )
+    session.add(obj)
+    await session.commit()
     await state.clear()

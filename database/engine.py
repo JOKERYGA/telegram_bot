@@ -3,9 +3,13 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_asyn
 
 from database.models import Base
 
+# DB_LITE=sqlite+aiosqlite:///my_base.db
+# DB_URL=postgresql+asyncpg://login:password@localhost:5432/db_name
+# engine = create_async_engine(os.getenv('DB_lite'), echo=True)
+
 
 # echo=True - все sql запросы будут выводиться в терминал(отладка)
-engine = create_async_engine(os.getenv('DB_lite'), echo=True)
+engine = create_async_engine(os.getenv('DB_URL'), echo=True)
 
 # будет брать сессии чтобы делать запросы в нашу баззу данных
 # expire_on_commit=False - чтоб мы могли воспользоваться нашей сессией повторно после коммита

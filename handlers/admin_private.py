@@ -228,7 +228,7 @@ async def add_image(message: types.Message, state: FSMContext, session: AsyncSes
             await orm_update_product(session, AddProduct.product_for_change.id, data)
         else:
             await orm_add_product(session, data)
-        await message.answer("Товар добавлен", reply_markup=ADMIN_KB)
+        await message.answer("Товар добавлен/изменен", reply_markup=ADMIN_KB)
         await state.clear()
 
     except Exception as e:

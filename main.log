@@ -1,0 +1,195 @@
+2024-04-23 11:23:32,623, DEBUG, Using proactor: IocpProactor, asyncio
+2024-04-23 11:23:33,549, INFO, Start polling, aiogram.dispatcher
+2024-04-23 11:23:33,652, INFO, Run polling for bot @Your_personal_assistantt_bot id=7172564177 - 'info_shortbot', aiogram.dispatcher
+2024-04-23 11:23:59,179, INFO, Update id=111290143 is not handled. Duration 0 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:03,672, INFO, Update id=111290144 is not handled. Duration 0 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:09,281, INFO, Update id=111290145 is handled. Duration 375 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:10,701, INFO, Update id=111290146 is handled. Duration 312 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:11,681, INFO, Update id=111290147 is handled. Duration 250 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:13,228, INFO, Update id=111290148 is handled. Duration 280 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:13,940, INFO, Update id=111290149 is handled. Duration 282 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:14,381, INFO, Update id=111290150 is not handled. Duration 46 ms by bot id=7172564177, aiogram.event
+2024-04-23 11:24:14,382, ERROR, Cause exception while process update id=111290150 by bot id=7172564177
+IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "cart" нарушает ограничение внешнего ключа "cart_user_id_fkey"
+DETAIL:  Ключ (user_id)=(1628881302) отсутствует в таблице "user".
+[SQL: INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated]
+[parameters: (1628881302, 1, 1)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj), aiogram.event
+Traceback (most recent call last):
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 538, in _prepare_and_execute
+    self._rows = await prepared_stmt.fetch(*parameters)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 176, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 241, in __bind_execute
+    data, status, _ = await self.__do_execute(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\asyncpg\prepared_stmt.py", line 230, in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg\protocol\protocol.pyx", line 207, in bind_execute
+asyncpg.exceptions.ForeignKeyViolationError: INSERT или UPDATE в таблице "cart" нарушает ограничение внешнего ключа "cart_user_id_fkey"
+DETAIL:  Ключ (user_id)=(1628881302) отсутствует в таблице "user".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 131, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 789, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.IntegrityError: <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "cart" нарушает ограничение внешнего ключа "cart_user_id_fkey"
+DETAIL:  Ключ (user_id)=(1628881302) отсутствует в таблице "user".
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 309, in _process_update
+    response = await self.feed_update(bot, update, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 158, in feed_update
+    response = await self.update.wrap_outer_middleware(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\error.py", line 25, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\middlewares\user_context.py", line 27, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\fsm\middleware.py", line 41, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\documents\GIT\mybot\middlewares\db.py", line 19, in __call__
+    return await handler(event, data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\dispatcher.py", line 276, in _listen_update
+    return await self.propagate_event(update_type=update_type, event=event, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 156, in _propagate_event
+    response = await router.propagate_event(update_type=update_type, event=event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 128, in propagate_event
+    return await observer.wrap_outer_middleware(_wrapped, event=event, data=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 123, in _wrapped
+    return await self._propagate_event(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\router.py", line 148, in _propagate_event
+    response = await observer.trigger(event, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\event\telegram.py", line 121, in trigger
+    return await wrapped_inner(event, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\aiogram\dispatcher\event\handler.py", line 43, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\documents\GIT\mybot\handlers\user_private.py", line 45, in user_menu
+    await add_to_cart(callback, callback_data, session)
+  File "C:\documents\GIT\mybot\handlers\user_private.py", line 36, in add_to_cart
+    await orm_add_to_cart(session, user_id=user.id, product_id=callback_data.product_id)
+  File "C:\documents\GIT\mybot\database\orm_query.py", line 174, in orm_add_to_cart
+    await session.commit()
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\ext\asyncio\session.py", line 1009, in commit
+    await greenlet_spawn(self.sync_session.commit)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+           ^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 572, in execute
+    self._adapt_connection.await_(
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 131, in await_only
+    return current.driver.switch(awaitable)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\util\_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 550, in _prepare_and_execute
+    self._handle_exception(error)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 501, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "c:\documents\GIT\mybot\venv\Lib\site-packages\sqlalchemy\dialects\postgresql\asyncpg.py", line 789, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.IntegrityError: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.ForeignKeyViolationError'>: INSERT или UPDATE в таблице "cart" нарушает ограничение внешнего ключа "cart_user_id_fkey"
+DETAIL:  Ключ (user_id)=(1628881302) отсутствует в таблице "user".
+[SQL: INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated]
+[parameters: (1628881302, 1, 1)]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-04-23 11:24:49,459, INFO, Polling stopped, aiogram.dispatcher
+2024-04-23 11:24:49,724, INFO, Polling stopped for bot @Your_personal_assistantt_bot id=7172564177 - 'info_shortbot', aiogram.dispatcher

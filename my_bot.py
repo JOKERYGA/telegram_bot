@@ -1,11 +1,15 @@
 import asyncio
+from logging.handlers import RotatingFileHandler
 import os
+import logging
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
-
 from dotenv import find_dotenv, load_dotenv
+
 load_dotenv(find_dotenv())
 
+from common.bot_cmds_list import private
 from middlewares.db import DataBaseSession
 
 from database.engine import create_db, drop_db, session_maker
@@ -14,40 +18,60 @@ from handlers.user_private import user_private_router
 from handlers.user_group import user_group_router
 from handlers.admin_private import admin_router
 
+# Логирование в файл:
 
-from common.bot_cmds_list import private
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename="main.log",
+    filemode='w',
+    format='%(asctime)s, %(levelname)s, %(message)s, %(name)s'
+)
 
-# ALLOWED_UPDATE = ["message", "edited_message", "callback_query"]
+# Создаю логгер для SQLAlchemy
+sqlalchemy_logger = logging.getLogger("sqlalchemy")
+# Устанавливаю уровень, с которого логи будут сохраняться в файл
+sqlalchemy_logger.setLevel(logging.INFO)
+# Указываю обработчик логов
+handler = RotatingFileHandler("sqlalchemy.log", maxBytes=50000000, backupCount=5)
+sqlalchemy_logger.addHandler(handler)
 
-bot = Bot(token=os.getenv("TOKEN"), parse_mode=ParseMode.HTML)
+# Отключаю передачу логов от логгера SQLAlchemy к родительским логгерам
+sqlalchemy_logger.propagate = False
+
+
+
+# from common.bot_cmds_list import private
+
+
+# ALLOWED_UPDATES = ['message', 'edited_message', 'callback_query']
+
+bot = Bot(token=os.getenv('TOKEN'), parse_mode=ParseMode.HTML)
 bot.my_admins_list = []
 
 dp = Dispatcher()
-# dp = Dispatcher(fsm_strategy=FSMStrategy.CHAT) - полезно для опросников, викторин и так далее
-
-
 
 dp.include_router(user_private_router)
 dp.include_router(user_group_router)
 dp.include_router(admin_router)
 
+
 async def on_startup(bot):
-    
-    run_param = False
-    if run_param:
-        await drop_db()
+
+    # await drop_db()
 
     await create_db()
 
+
 async def on_shutdown(bot):
-    print("Бот перестал работать")
+    print('бот лег')
+
 
 async def main():
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
-    
+
     dp.update.middleware(DataBaseSession(session_pool=session_maker))
-    
+
     await bot.delete_webhook(drop_pending_updates=True)
     # await bot.delete_my_commands(scope=types.BotCommandScopeAllPrivateChats())
     await bot.set_my_commands(commands=private, scope=types.BotCommandScopeAllPrivateChats())

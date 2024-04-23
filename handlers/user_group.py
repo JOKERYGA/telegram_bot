@@ -1,4 +1,8 @@
 from string import punctuation
+import requests
+import json
+
+API_weather = "64280d590be9c48063fccef31ae5b7aa"
 
 from aiogram import F, Bot, types, Router
 from aiogram.filters import Command
@@ -18,7 +22,6 @@ async def get_admins(message: types.Message, bot: Bot):
     admins_list = await bot.get_chat_administrators(chat_id)
     # просмотреть все данные и свойства полученных объектов
     # print(admins_list)
-    # Код ниже это генератор списка, как и этот x = [i for i in range(10)]
     admins_list = [
         member.user.id
         for member in admins_list
@@ -39,7 +42,9 @@ def clean_text(text: str):
 async def cleaner(message: types.Message):
     if restricted_words.intersection(clean_text(message.text.lower()).split()):
         await message.answer(
-            f"{message.from_user.first_name}, соблюддайте порядок в чате!"
+            f"{message.from_user.first_name}, соблюдайте порядок в чате!"
         )
         await message.delete()
         # await message.chat.ban(message.from_user.id)
+
+        

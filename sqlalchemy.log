@@ -5223,3 +5223,2937 @@ WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
 INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
 [generated in 0.00132s] (1628881302, 1, 1)
 ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00236s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01914s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02526s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02973s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03384s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00134s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00257s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00179s] ('main',)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00219s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.0165s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02401s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02839s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03306s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00139s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00146s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00164s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 1.784s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 2.077s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00168s] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[generated in 0.00158s] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00148s] (1628881302, 1)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 8.594s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 8.886s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 6.011s ago] (2,)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 12.35s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 12.64s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 13.24s ago] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 15.21s ago] ('about',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 16.63s ago] ('payment',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 17.61s ago] ('shipping',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 19.04s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 19.33s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 15.66s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 17.33s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 17.33s ago] (1628881302, 1)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 369.8s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 369.8s ago] (1628881302, 1)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 404.5s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 404.5s ago] (1628881302, 1)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00186s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01646s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02054s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02475s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03054s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00119s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00130s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00228s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 1.51s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 2.458s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00283s] (1,)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00195s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01583s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02916s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03329s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.0373s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00122s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00188s] ()
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00592s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02381s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02912s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03378s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.05789s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.01285s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00146s] ()
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00681s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.0239s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03004s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03487s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03986s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00299s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00147s] ()
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00224s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01773s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02741s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03248s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03763s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00157s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00127s] ()
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.02235s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.09919s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.1039s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.1132s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.118s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00131s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00155s] ()
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00359s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01661s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02103s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02487s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03719s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.01684s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00129s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00184s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 1.673s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 11.29s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00167s] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[generated in 0.00160s] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00138s] (1628881302, 1)
+INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
+[generated in 0.00469s] (1628881302, 1, 1)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00167s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01421s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01825s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02207s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02914s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+
+CREATE TABLE banner (
+	id SERIAL NOT NULL, 
+	name VARCHAR(150) NOT NULL, 
+	image VARCHAR(150), 
+	description TEXT, 
+	created TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	updated TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (name)
+)
+
+
+[no key 0.00278s] ()
+
+CREATE TABLE category (
+	id SERIAL NOT NULL, 
+	name VARCHAR(150) NOT NULL, 
+	created TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	updated TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	PRIMARY KEY (id)
+)
+
+
+[no key 0.00484s] ()
+
+CREATE TABLE "user" (
+	id SERIAL NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	first_name VARCHAR(150), 
+	last_name VARCHAR(150), 
+	phone VARCHAR(13), 
+	created TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	updated TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (user_id)
+)
+
+
+[no key 0.00299s] ()
+
+CREATE TABLE product (
+	id SERIAL NOT NULL, 
+	name VARCHAR(150) NOT NULL, 
+	description TEXT NOT NULL, 
+	price NUMERIC(5, 2) NOT NULL, 
+	image VARCHAR(150) NOT NULL, 
+	category_id INTEGER NOT NULL, 
+	created TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	updated TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(category_id) REFERENCES category (id) ON DELETE CASCADE
+)
+
+
+[no key 0.00290s] ()
+
+CREATE TABLE cart (
+	id SERIAL NOT NULL, 
+	user_id INTEGER NOT NULL, 
+	product_id INTEGER NOT NULL, 
+	quantity INTEGER NOT NULL, 
+	created TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	updated TIMESTAMP WITHOUT TIME ZONE NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(user_id) REFERENCES "user" (user_id) ON DELETE CASCADE, 
+	FOREIGN KEY(product_id) REFERENCES product (id) ON DELETE CASCADE
+)
+
+
+[no key 0.00755s] ()
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00220s] ()
+INSERT INTO category (name, created, updated) SELECT p0::VARCHAR, p1::TIMESTAMP WITHOUT TIME ZONE, p2::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES ($1::VARCHAR, now(), now(), 0), ($2::VARCHAR, now(), now(), 1)) AS imp_sen(p0, p1, p2, sen_counter) ORDER BY sen_counter RETURNING category.id, category.created, category.updated, category.id AS id__1
+[generated in 0.00016s (insertmanyvalues) 1/1 (ordered)] ('Еда', 'Напитки')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00156s] ()
+INSERT INTO banner (name, image, description, created, updated) SELECT p0::VARCHAR, p1::VARCHAR, p2::VARCHAR, p3::TIMESTAMP WITHOUT TIME ZONE, p4::TIMESTAMP WITHOUT TIME ZONE FROM (VALUES ($1::VARCHAR, $2::VARCHAR, $3::VARCHAR, now(), now(), 0), ($4: ... 331 characters truncated ... ounter) ORDER BY sen_counter RETURNING banner.id, banner.created, banner.updated, banner.id AS id__1
+[generated in 0.00020s (insertmanyvalues) 1/1 (ordered)] ('main', None, 'Добро пожаловать!', 'about', None, 'Пиццерия Такая-то.\nРежим работы - круглосуточно.', 'payment', None, '<b>Варианты оплаты:</b>\n✅ Картой в боте\n✅ При получении карта/кеш\n✅ В заведении', 'shipping', None, '<b>Варианты доставки/заказа:</b>\n✅ Курьер\n✅ Самовынос (сейчас прибегу заберу)\n✅ Покушаю у Вас (сейчас прибегу)\n----------------------\n<b>Нельзя:</b>\n❌ Почта\n❌ Голуби', 'catalog', None, 'Категории:', 'cart', None, 'В корзине ничего нет!')
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 36.82s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 38.63s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[generated in 0.00154s] ('Пицца 1', 'Описание 1', 1.0, 'AgACAgIAAxkBAAIHNWYnV9eHN9B47mdcjxLibeumsWuhAAL12TEbohE5Sf_Qm7_rhgSBAQADAgADeQADNAQ', 1)
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 65.69s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 67.78s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[cached since 21s ago] ('Пицца 2', 'Описание 2', 2.0, 'AgACAgIAAxkBAAIHQGYnV-sr-5YN6pNhLc6deEHuA9WTAAL22TEbohE5SeKuaqc7FPh7AQADAgADeQADNAQ', 1)
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 82.25s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 84.22s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[cached since 37.65s ago] ('Пицца 3', 'Описание 3', 3.0, 'AgACAgIAAxkBAAIHS2YnV_x8MjphM5z7XkZy2-UenTjTAAL32TEbohE5Sf0Nc0rHHxTcAQADAgADeQADNAQ', 1)
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 92.56s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 125.7s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[generated in 0.00243s] ('AgACAgIAAxkBAAIHVWYnWB5aNESH8vQ27-WNuu4MQ0NOAAL42TEbohE5SWoO7IZ2pNgyAQADAgADeQADNAQ', 'about')
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 154.2s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 156.5s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 185.6s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 186.9s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[cached since 142.3s ago] ('Пицца 4', 'Описание 4', 4.0, 'AgACAgIAAxkBAAIHb2YnWGUD-pEzoSSgbVh56bfVJeBbAAL-2TEbohE5Sa0XZZ_HMY-9AQADAgADeQADNAQ', 1)
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 205.4s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 215.6s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[cached since 172.4s ago] ('Пицца 5', 'Описание 5', 5.0, 'AgACAgIAAxkBAAIHfmYnWIPXOxERt9P10WQJjhLvMf_rAAL_2TEbohE5SfQCBqmhwRHNAQADAgADeQADNAQ', 1)
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 227.5s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 237.1s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[cached since 111.4s ago] ('AgACAgIAAxkBAAIHgmYnWI6EHQK2iD0_k3TXM2JnZfc9AAIC2jEbohE5SctZ9q-UC7oTAQADAgADeQADNAQ', 'main')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 239.1s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 246.3s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[cached since 120.5s ago] ('AgACAgIAAxkBAAIHhmYnWJfPb5dkOfJC8PSc8SjND_MZAAIE2jEbohE5SXpItsSP6w-jAQADAgADeQADNAQ', 'cart')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 247.7s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 251.9s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[cached since 126.2s ago] ('AgACAgIAAxkBAAIHimYnWJw5lf1UYGxMDc4TCrTMXkXbAAIF2jEbohE5SaMIxxbHt4OlAQADAgADeQADNAQ', 'catalog')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 255s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 260.6s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[cached since 134.9s ago] ('AgACAgIAAxkBAAIHjmYnWKXnI84GDWzTZFfWK7esIN-1AAIG2jEbohE5SQPLu1wbPpTNAQADAgADeQADNAQ', 'payment')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 273.2s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 281s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[cached since 155.3s ago] ('AgACAgIAAxkBAAIHk2YnWLplLO2kBVV3VuXLzAABvtAlQwACB9oxG6IROUkBQxYbntrGdQEAAwIAA3kAAzQE', 'shipping')
+COMMIT
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 292s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00158s] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 295.1s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 2.946s ago] (2,)
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 311.1s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 312.5s ago] ()
+ROLLBACK
+BEGIN (implicit)
+INSERT INTO product (name, description, price, image, category_id, created, updated) VALUES ($1::VARCHAR, $2::VARCHAR, $3::NUMERIC(5, 2), $4::VARCHAR, $5::INTEGER, now(), now()) RETURNING product.id, product.created, product.updated
+[cached since 270.9s ago] ('Чай с лимоном', 'Вкусный чай', 2.5, 'AgACAgIAAxkBAAIHqWYnWObt7XSx6XoGai_L1_72FzpjAAII2jEbohE5SUGrlDTbLprYAQADAgADbQADNAQ', 2)
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 325.7s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 330.6s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 39.02s ago] (2,)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00543s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02123s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02836s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03276s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03687s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00099s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00129s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00312s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 3.973s ago] ('about',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 5.311s ago] ('payment',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 6.128s ago] ('shipping',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 10.11s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 16.43s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 11.88s ago] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 63.28s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[cached since 74.14s ago] ()
+UPDATE banner SET image=$1::VARCHAR, updated=now() WHERE banner.name = $2::VARCHAR
+[generated in 0.00114s] ('AgACAgIAAxkBAAIHuGYnWnA0cjbNNY13fPmmLfS4m-tpAAIE2jEbohE5SXpItsSP6w-jAQADAgADeQADNAQ', 'cart')
+COMMIT
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 87.55s ago] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 95.88s ago] ('payment',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 96.74s ago] ('shipping',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 97.39s ago] ('about',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 97.99s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 104.3s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00178s] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[generated in 0.00154s] (1628881302,)
+INSERT INTO "user" (user_id, first_name, last_name, phone, created, updated) VALUES ($1::INTEGER, $2::VARCHAR, $3::VARCHAR, $4::VARCHAR, now(), now()) RETURNING "user".id, "user".created, "user".updated
+[generated in 0.00116s] (1628881302, 'Владислав', 'Глуховский', None)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00160s] (1628881302, 1)
+INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
+[generated in 0.00236s] (1628881302, 1, 1)
+COMMIT
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 4.465s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 4.452s ago] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[generated in 0.00120s] (2, 1)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 6.707s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 6.247s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 6.232s ago] (1628881302, 2)
+INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
+[cached since 6.232s ago] (1628881302, 2, 1)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 2482s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 2482s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 2482s ago] (1628881302, 3)
+INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
+[cached since 2482s ago] (1628881302, 3, 1)
+COMMIT
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00271s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01945s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02405s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02851s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03293s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00256s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00179s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00137s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 2.624s ago] ('catalog',)
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[cached since 5.027s ago] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[generated in 0.00152s] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[generated in 0.00173s] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00428s] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[generated in 0.00211s] (3, 1)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 2.56s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 1.619s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 1.611s ago] (1628881302, 2)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 1.603s ago] (2, 2)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 4.238s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 3.24s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 3.233s ago] (1628881302, 3)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 3.225s ago] (2, 3)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 6.731s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 5.894s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 5.888s ago] (1628881302, 4)
+INSERT INTO cart (user_id, product_id, quantity, created, updated) VALUES ($1::INTEGER, $2::INTEGER, $3::INTEGER, now(), now()) RETURNING cart.id, cart.created, cart.updated
+[generated in 0.00147s] (1628881302, 4, 1)
+COMMIT
+BEGIN (implicit)
+SELECT product.id, product.name, product.description, product.price, product.image, product.category_id, product.created, product.updated 
+FROM product 
+WHERE product.category_id = $1::INTEGER
+[cached since 9.112s ago] (1,)
+ROLLBACK
+BEGIN (implicit)
+SELECT "user".id, "user".user_id, "user".first_name, "user".last_name, "user".phone, "user".created, "user".updated 
+FROM "user" 
+WHERE "user".user_id = $1::INTEGER
+[cached since 8.228s ago] (1628881302,)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 8.221s ago] (1628881302, 3)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 8.213s ago] (3, 3)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[generated in 0.00200s] (1628881302,)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00263s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02896s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.0341s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.04348s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.04815s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00281s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00163s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[generated in 0.00262s] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00136s] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[generated in 0.00157s] (4, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 154.4s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 158s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 175.2s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 22.54s ago] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 22.53s ago] (5, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 176.9s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 177.8s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 209.3s ago] (1628881302,)
+ROLLBACK
+select pg_catalog.version()
+[raw sql] ()
+select current_schema()
+[raw sql] ()
+show standard_conforming_strings
+[raw sql] ()
+BEGIN (implicit)
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[generated in 0.00265s] ('banner', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.01931s ago] ('category', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.02502s ago] ('product', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03116s ago] ('user', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+SELECT pg_catalog.pg_class.relname 
+FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+WHERE pg_catalog.pg_class.relname = $1::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[$2::VARCHAR, $3::VARCHAR, $4::VARCHAR, $5::VARCHAR, $6::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != $7::VARCHAR
+[cached since 0.03677s ago] ('cart', 'r', 'p', 'f', 'v', 'm', 'pg_catalog')
+COMMIT
+BEGIN (implicit)
+(Banner|banner) _post_configure_properties() started
+(Banner|banner) initialize prop id
+(Banner|banner) initialize prop name
+(Banner|banner) initialize prop image
+(Banner|banner) initialize prop description
+(Banner|banner) initialize prop created
+(Banner|banner) initialize prop updated
+(Banner|banner) _post_configure_properties() complete
+(Category|category) _post_configure_properties() started
+(Category|category) initialize prop id
+(Category|category) initialize prop name
+(Category|category) initialize prop created
+(Category|category) initialize prop updated
+(Category|category) _post_configure_properties() complete
+(Product|product) _post_configure_properties() started
+(Product|product) initialize prop category
+Product.category setup primary join category.id = product.category_id
+Product.category setup secondary join None
+Product.category synchronize pairs [(category.id => product.category_id)]
+Product.category secondary synchronize pairs []
+Product.category local/remote pairs [(product.category_id / category.id)]
+Product.category remote columns [category.id]
+Product.category local columns [product.category_id]
+Product.category relationship direction RelationshipDirection.MANYTOONE
+(Category|category) _configure_property(product, RelationshipProperty)
+Category.product setup primary join category.id = product.category_id
+Category.product setup secondary join None
+Category.product synchronize pairs [(category.id => product.category_id)]
+Category.product secondary synchronize pairs []
+Category.product local/remote pairs [(category.id / product.category_id)]
+Category.product remote columns [product.category_id]
+Category.product local columns [category.id]
+Category.product relationship direction RelationshipDirection.ONETOMANY
+Category.product lazy loading clause :param_1 = product.category_id
+Product.category lazy loading clause category.id = :param_1
+Product.category will use Session.get() to optimize instance loads
+(Product|product) initialize prop id
+(Product|product) initialize prop name
+(Product|product) initialize prop description
+(Product|product) initialize prop price
+(Product|product) initialize prop image
+(Product|product) initialize prop category_id
+(Product|product) initialize prop created
+(Product|product) initialize prop updated
+(Product|product) _post_configure_properties() complete
+(User|user) _post_configure_properties() started
+(User|user) initialize prop id
+(User|user) initialize prop user_id
+(User|user) initialize prop first_name
+(User|user) initialize prop last_name
+(User|user) initialize prop phone
+(User|user) initialize prop created
+(User|user) initialize prop updated
+(User|user) _post_configure_properties() complete
+(Cart|cart) _post_configure_properties() started
+(Cart|cart) initialize prop user
+Cart.user setup primary join "user".user_id = cart.user_id
+Cart.user setup secondary join None
+Cart.user synchronize pairs [(user.user_id => cart.user_id)]
+Cart.user secondary synchronize pairs []
+Cart.user local/remote pairs [(cart.user_id / user.user_id)]
+Cart.user remote columns [user.user_id]
+Cart.user local columns [cart.user_id]
+Cart.user relationship direction RelationshipDirection.MANYTOONE
+(User|user) _configure_property(cart, RelationshipProperty)
+User.cart setup primary join "user".user_id = cart.user_id
+User.cart setup secondary join None
+User.cart synchronize pairs [(user.user_id => cart.user_id)]
+User.cart secondary synchronize pairs []
+User.cart local/remote pairs [(user.user_id / cart.user_id)]
+User.cart remote columns [cart.user_id]
+User.cart local columns [user.user_id]
+User.cart relationship direction RelationshipDirection.ONETOMANY
+User.cart lazy loading clause :param_1 = cart.user_id
+Cart.user lazy loading clause "user".user_id = :param_1
+(Cart|cart) initialize prop product
+Cart.product setup primary join product.id = cart.product_id
+Cart.product setup secondary join None
+Cart.product synchronize pairs [(product.id => cart.product_id)]
+Cart.product secondary synchronize pairs []
+Cart.product local/remote pairs [(cart.product_id / product.id)]
+Cart.product remote columns [product.id]
+Cart.product local columns [cart.product_id]
+Cart.product relationship direction RelationshipDirection.MANYTOONE
+(Product|product) _configure_property(cart, RelationshipProperty)
+Product.cart setup primary join product.id = cart.product_id
+Product.cart setup secondary join None
+Product.cart synchronize pairs [(product.id => cart.product_id)]
+Product.cart secondary synchronize pairs []
+Product.cart local/remote pairs [(product.id / cart.product_id)]
+Product.cart remote columns [cart.product_id]
+Product.cart local columns [product.id]
+Product.cart relationship direction RelationshipDirection.ONETOMANY
+Product.cart lazy loading clause :param_1 = cart.product_id
+Cart.product lazy loading clause product.id = :param_1
+Cart.product will use Session.get() to optimize instance loads
+(Cart|cart) initialize prop id
+(Cart|cart) initialize prop user_id
+(Cart|cart) initialize prop product_id
+(Cart|cart) initialize prop quantity
+(Cart|cart) initialize prop created
+(Cart|cart) initialize prop updated
+(Cart|cart) _post_configure_properties() complete
+SELECT category.id, category.name, category.created, category.updated 
+FROM category
+[generated in 0.00148s] ()
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner
+[generated in 0.00130s] ()
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated 
+FROM cart 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00168s] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[generated in 0.00121s] (6, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[generated in 0.00181s] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00195s] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 2.092s ago] (5, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 2.085s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 1.028s ago] (1628881302, 1)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 3.109s ago] (4, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 3.1s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 15.12s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 14.82s ago] (1628881302, 2)
+UPDATE cart SET quantity=$1::INTEGER, updated=now() WHERE cart.id = $2::INTEGER
+[cached since 16.9s ago] (1, 2)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 16.89s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 17.95s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 18.63s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 19.16s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 23s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 24.19s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 25.21s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 26.09s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 30.25s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 31.07s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 32.79s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+DELETE FROM cart WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[generated in 0.00131s] (1628881302, 2)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 35.95s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 47.26s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 48.16s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 47.68s ago] (1628881302, 4)
+DELETE FROM cart WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 13.81s ago] (1628881302, 4)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 49.76s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[generated in 0.00151s] ('main',)
+ROLLBACK
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 66.43s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+DELETE FROM cart WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 32.08s ago] (1628881302, 1)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 68.03s ago] (1628881302,)
+ROLLBACK
+BEGIN (implicit)
+DELETE FROM cart WHERE cart.user_id = $1::INTEGER AND cart.product_id = $2::INTEGER
+[cached since 33.49s ago] (1628881302, 3)
+COMMIT
+BEGIN (implicit)
+SELECT cart.id, cart.user_id, cart.product_id, cart.quantity, cart.created, cart.updated, product_1.id AS id_1, product_1.name, product_1.description, product_1.price, product_1.image, product_1.category_id, product_1.created AS created_1, product_1.updated AS updated_1 
+FROM cart LEFT OUTER JOIN product AS product_1 ON product_1.id = cart.product_id 
+WHERE cart.user_id = $1::INTEGER
+[cached since 69.44s ago] (1628881302,)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 4.326s ago] ('cart',)
+ROLLBACK
+BEGIN (implicit)
+SELECT banner.id, banner.name, banner.image, banner.description, banner.created, banner.updated 
+FROM banner 
+WHERE banner.name = $1::VARCHAR
+[cached since 7.104s ago] ('main',)
+ROLLBACK
